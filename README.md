@@ -2,7 +2,7 @@
 
 [dotfiles](https://askubuntu.com/questions/94780/what-are-dot-files), and some scripts to automate macos setup.
 
-inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe/dotfiles), a 10/10 guy.
+inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe/dotfiles), a 🐝/🐝 guy.
 
 
 ## batteries
@@ -15,28 +15,44 @@ inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe
 ## usage
 
 **go somewhere you dont mind this repo living in:**  
-`cd ${FOLDER_WHERE_DOTFILES_WILL_LIVE_FOREVER_PROBABLY_TILDE_IDK_IM_NOT_YOUR_BOSS}`  
+```shell
+cd ${FOLDER_WHERE_DOTFILES_WILL_LIVE_FOREVER_PROBABLY_TILDE_IDK_IM_NOT_YOUR_BOSS}
+```  
 
 **clone the repo:**  
-`git clone https://github.com/SalomonSmeke/dotfiles.git`
+```shell
+git clone https://github.com/SalomonSmeke/dotfiles.git
+```
 
 **go into the repo:**  
-`cd dotfiles`  
+```shell
+cd dotfiles
+```  
 
 **install the dotfiles on macos:**  
-`./setup.sh macos-install`  
+```shell
+./setup.sh macos-install
+```  
 
 **install the dotfiles elsewhere:**  
-`./setup.sh symlink-only`
+```shell
+./setup.sh symlink-only
+```
 
 **update antigen:**  
-`./setup.sh antigen-update`  
+```shell
+./setup.sh antigen-update
+```  
 
 **print usage:**  
-`./setup.sh help`
+```shell
+./setup.sh help
+```
 
 **print usage but very crypographically secure:**  
-`./setup.sh $RANDOM`
+```shell
+./setup.sh $RANDOM
+```  
 
 ## ech
 
