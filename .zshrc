@@ -1,5 +1,4 @@
 # Antigen
-
 source ~/antigen.zsh;
 
 # Load the oh-my-zsh's library.
@@ -22,12 +21,11 @@ antigen bundle zsh-users/zsh-syntax-highlighting
 antigen apply
 
 # Config
-DISABLE_AUTO_TITLE="true"
-COMPLETION_WAITING_DOTS="true"
-EDITOR="atom"
+export DISABLE_AUTO_TITLE="true"
+export COMPLETION_WAITING_DOTS="true"
+export EDITOR="atom"
 
 # After-hook
-
 if [ -f ~/.zshrc_local_after ]; then
   source ~/.zshrc_local_after
 fi

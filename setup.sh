@@ -11,7 +11,6 @@ TARGET_DIR="$HOME";
 
 ACTIONS=("symlink-only" "macos-install" "antigen-update" "cancel");
 
-
 # Actions
 
 symlink-only()
