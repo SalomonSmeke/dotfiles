@@ -1,0 +1,7 @@
+[user]
+  name = SalomonSmeke
+  email = ssmeke@luc.edu
+
+[alias]
+  # See a tree structure
+  tree = log --oneline --decorate --all --graph
