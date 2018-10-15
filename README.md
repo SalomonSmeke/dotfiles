@@ -50,7 +50,7 @@ cd dotfiles
 ./setup.sh help
 ```
 
-**print usage but very cryptographically secure:**  
+**print usage but very [cryptographically secure](https://www.youtube.com/watch?v=KEkrWRHCDQU):**  
 ```shell
 ./setup.sh $RANDOM
 ```  
