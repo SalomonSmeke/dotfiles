@@ -16,6 +16,10 @@ ACTIONS=("symlink-only" "macos-install" "antigen-update" "cancel");
 
 symlink-only()
 {
+  if [ ! check-zsh ] ; then
+    printf "No zsh found, exiting...";
+    exit 1;
+  fi
   init-submodules;
   symlink-all;
   exit 0;
