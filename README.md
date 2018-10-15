@@ -4,6 +4,14 @@
 
 inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe/dotfiles), a 10/10 guy.
 
+
+## batteries
+
+[Brew](https://brew.sh) - 👌 macos package manager.  
+[Zsh](http://www.zsh.org) - 💪 shell.  
+[Antigen](http://antigen.sharats.me) - 👏 plugin manager for zsh.  
+[Oh My Zsh](https://ohmyz.sh) - 🙏 zsh config framework and all around place-where-zsh-stuff-lives.  
+
 ## usage
 
 **go somewhere you dont mind this repo living in:**  
@@ -30,11 +38,6 @@ inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe
 **print usage but very crypographically secure:**  
 `./setup.sh $RANDOM`
 
-## batteries
-
-[Brew](https://brew.sh) - 👌 macos package manager.  
-[Zsh](http://www.zsh.org) - 💪 shell.  
-[Antigen](http://antigen.sharats.me) - 👏 plugin manager for zsh.  
-[Oh My Zsh](https://ohmyz.sh) - 🙏 zsh config framework and all around place-where-zsh-stuff-lives.  
+## ech
 
 [Copyright (c)](https://github.com/SalomonSmeke/dotfiles/blob/master/LICENSE) 2018 [Salomon Smeke](https://ssmeke.io) with an [MIT License](https://github.com/SalomonSmeke/dotfiles/blob/master/LICENSE)
