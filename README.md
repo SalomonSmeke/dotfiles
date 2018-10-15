@@ -4,7 +4,7 @@
 
 [dotfiles](https://askubuntu.com/questions/94780/what-are-dot-files), and some scripts to automate macos setup.
 
-inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe/dotfiles), a 🐝/🐝 guy.
+inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe/dotfiles), a 🍯🐝/🍯🐝 guy.
 
 ## batteries
 
