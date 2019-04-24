@@ -35,6 +35,13 @@ macos-install()
 antigen-update()
 {
   init-submodules;
+  if [ check-antigen ] ; then
+    if [ ! check-zsh ] ; then
+      printf "No zsh found, exiting...";
+      exit 1;
+    fi
+    antigen-selfupdate-update;
+  fi
   exit 0;
 }
 
@@ -57,7 +64,7 @@ print-help()
 
 init-submodules()
 {
-  git submodule update --init --recursive;
+  git submodule update --init --recursive --remote;
 }
 
 symlink-all()
@@ -79,6 +86,11 @@ macos-prerequisites()
   fi
 }
 
+check-antigen()
+{
+  if [ -f "$~/antigen.zsh" ]; then return 1; else return 0; fi;
+}
+
 check-zsh()
 {
   if [ -f "$(which zsh)" ]; then return 1; else return 0; fi;
@@ -97,6 +109,11 @@ install-brew()
 install-zsh()
 {
   brew install zsh;
+}
+
+antigen-selfupdate-update()
+{
+  zsh -c "source ~/.zshrc && antigen selfupdate && antigen update && antigen cleanup;"
 }
 
 # Entry
