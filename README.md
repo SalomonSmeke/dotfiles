@@ -1,6 +1,6 @@
 # dotfiles
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/551c467fd5544cd486f61446793b6c6f)](https://www.codacy.com/app/ssmeke/dotfiles?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SalomonSmeke/dotfiles&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/f0ffa83475c64736a9c9eb7ab420233e)](https://www.codacy.com/app/ssmeke/dotfiles?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=SalomonSmeke/dotfiles&amp;utm_campaign=Badge_Grade)
 
 [dotfiles](https://askubuntu.com/questions/94780/what-are-dot-files), and some scripts to automate macos setup.
 
