@@ -63,34 +63,39 @@ print-help()
 {
   printf "\nSalomon Smeke Dotfiles Setup\n";
   printf "\nCommands:\n";
-  i=0
+  i=0;
   for opt in "${ACTIONS[@]}"; do
     printf "\t%s - %s\n" "${opt}" "${DESCRIPTIONS[i]}";
-    i=$(($i+1))
+    i=$(($i+1));
   done
   printf "\n";
 }
 
 init-submodules()
 {
+  printf "Initializing git submodules.\n";
   git submodule update --init --recursive --remote;
 }
 
 symlink-all()
 {
-  pushd ${TARGET_DIR};
+  printf "Symlinking...\n";
+  pushd ${TARGET_DIR} >/dev/null;
   for opt in ${PATH_TO_ZSHRC} ${PATH_TO_GITCONFIG} ${PATH_TO_ANTIGEN} ${PATH_TO_TMUXCONFIG}; do
+    printf "\t%s\n" "${opt}";
     ln -s "${opt}";
   done
-  popd;
+  popd >/dev/null;
 }
 
 macos-prerequisites()
 {
   if [ ! check-zsh ] ; then
     if [ ! check-brew ] ; then
+      printf "No Brew found, installing...\n";
       install-brew;
     fi
+    printf "No zsh found, installing...\n";
     install-zsh;
   fi
 }
