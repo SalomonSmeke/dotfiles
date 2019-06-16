@@ -5,6 +5,7 @@
 PATH_TO_DOTFILES=$(pwd);
 PATH_TO_ZSHRC="${PATH_TO_DOTFILES}/.zshrc";
 PATH_TO_GITCONFIG="${PATH_TO_DOTFILES}/.gitconfig";
+PATH_TO_TMUXCONFIG="${PATH_TO_DOTFILES}/.tmux.conf";
 PATH_TO_ANTIGEN="${PATH_TO_DOTFILES}/antigen/antigen.zsh";
 
 TARGET_DIR="$HOME";
@@ -70,7 +71,7 @@ init-submodules()
 symlink-all()
 {
   pushd ${TARGET_DIR};
-  for opt in ${PATH_TO_ZSHRC} ${PATH_TO_GITCONFIG} ${PATH_TO_ANTIGEN}; do
+  for opt in ${PATH_TO_ZSHRC} ${PATH_TO_GITCONFIG} ${PATH_TO_ANTIGEN} ${PATH_TO_TMUXCONFIG}; do
     ln -s "${opt}";
   done
   popd;
