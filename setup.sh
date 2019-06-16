@@ -11,6 +11,12 @@ PATH_TO_ANTIGEN="${PATH_TO_DOTFILES}/antigen/antigen.zsh";
 TARGET_DIR="$HOME";
 
 ACTIONS=("symlink-only" "macos-install" "antigen-update" "cancel");
+DESCRIPTIONS=(
+"Symlink dotfiles to $HOME directory."
+"Install dotfiles to $HOME directory and ensure env is set up with zsh and brew."
+"Update antigen."
+"No-op."
+);
 
 # Actions
 
@@ -57,8 +63,10 @@ print-help()
 {
   printf "\nSalomon Smeke Dotfiles Setup\n";
   printf "\nCommands:\n";
+  i=0
   for opt in "${ACTIONS[@]}"; do
-    printf "\t%s\n" "${opt}";
+    printf "\t%s - %s\n" "${opt}" "${DESCRIPTIONS[i]}";
+    i=$(($i+1))
   done
   printf "\n";
 }
