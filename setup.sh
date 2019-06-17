@@ -74,7 +74,7 @@ print-help()
   i=0;
   for opt in "${ACTIONS[@]}"; do
     printf "\t%s - %s\n" "${opt}" "${DESCRIPTIONS[i]}";
-    i=$(($i+1));
+    i=$((i+1));
   done
   printf "\n";
 }
