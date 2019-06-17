@@ -32,12 +32,12 @@ cd dotfiles
 
 **install the dotfiles on macos:**  
 ```shell
-./setup.sh macos-install
+./setup.sh macos
 ```  
 
 **install the dotfiles elsewhere:**  
 ```shell
-./setup.sh symlink-only
+./setup.sh symlink
 ```
 
 **update antigen:**  

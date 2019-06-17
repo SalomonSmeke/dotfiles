@@ -10,17 +10,18 @@ PATH_TO_ANTIGEN="${PATH_TO_DOTFILES}/antigen/antigen.zsh";
 
 TARGET_DIR="$HOME";
 
-ACTIONS=("symlink-only" "macos-install" "antigen-update" "cancel");
+ACTIONS=("symlink" "macos" "chsh-zsh" "antigen-update" "cancel");
 DESCRIPTIONS=(
 "Symlink dotfiles to $HOME directory."
 "Install dotfiles to $HOME directory and ensure env is set up with zsh and brew."
+"Set zsh as default shell."
 "Update antigen."
 "No-op."
 );
 
 # Actions
 
-symlink-only()
+symlink()
 {
   if [ ! check-zsh ] ; then
     printf "No zsh found, exiting...";
@@ -31,11 +32,18 @@ symlink-only()
   exit 0;
 }
 
-macos-install()
+macos()
 {
   init-submodules;
   macos-prerequisites;
   symlink-all;
+  set-zsh-default;
+  exit 0;
+}
+
+chsh-zsh()
+{
+  set-zsh-default;
   exit 0;
 }
 
@@ -86,6 +94,12 @@ symlink-all()
     ln -s "${opt}";
   done
   popd >/dev/null;
+}
+
+set-zsh-default()
+{
+  printf "Setting zsh as your default shell, this might require your password.\n\t";
+  sudo chsh -s $(which zsh) $(whoami);
 }
 
 macos-prerequisites()
@@ -139,10 +153,12 @@ main()
   if [ "$1" == "help" ]; then
     print-help;
     exit 0;
-  elif [ "$1" == "symlink-only" ]; then
-    symlink-only;
-  elif [ "$1" == "macos-install" ]; then
-    macos-install;
+  elif [ "$1" == "symlink" ]; then
+    symlink;
+  elif [ "$1" == "macos" ]; then
+    macos;
+  elif [ "$1" == "chsh-zsh" ]; then
+    chsh-zsh;
   elif [ "$1" == "antigen-update" ]; then
     antigen-update;
   elif [ "$1" == "cancel" ]; then
