@@ -27,7 +27,6 @@ symlink()
     printf "No zsh found, exiting...";
     exit 1;
   fi
-  init-submodules;
   symlink-all;
   exit 0;
 }
