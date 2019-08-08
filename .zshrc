@@ -23,7 +23,6 @@ antigen apply
 # Config
 export DISABLE_AUTO_TITLE="true"
 export COMPLETION_WAITING_DOTS="true"
-export EDITOR="atom"
 
 # After-hook
 if [ -f ~/.zshrc_local_after ]; then
