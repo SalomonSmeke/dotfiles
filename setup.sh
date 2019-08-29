@@ -151,7 +151,7 @@ main()
 {
   if [ "$1" == "help" ]; then
     print-help;
-    exit 0;
+    cancel;
   elif [ "$1" == "symlink" ]; then
     symlink;
   elif [ "$1" == "macos" ]; then
