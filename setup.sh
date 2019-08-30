@@ -7,16 +7,20 @@ FNAMES_TO_SYMLINK=(
 ".gitconfig"
 ".tmux.conf"
 );
-ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt"
+ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt";
 TARGET_DIR="$HOME";
 TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins.sh";
 
-ACTIONS=("symlink" "macos" "chsh-zsh" "antibody-update" "cancel");
+BREW_INSTALLS="ack bat exa htop python sl tmux vim asciinema nvm tree";
+BREW_CASK_INSTALLS="atom disk-inventory-x firefox imageoptim onyx vlc";
+
+ACTIONS=("symlink" "macos" "chsh-zsh" "antibody-update" "brew-packages" "cancel");
 DESCRIPTIONS=(
 "Symlink dotfiles to $HOME directory."
 "Install dotfiles to $HOME directory and ensure env is set up with zsh and brew."
 "Set zsh as default shell."
 "Update/Install antibody."
+"Install some nice brew packages (cask and regular)."
 "No-op."
 );
 
@@ -61,6 +65,14 @@ antibody-update()
 
 cancel()
 {
+  exit 0;
+}
+
+brew-packages()
+{
+  macos-prerequisites;
+  brew-install;
+  brew-cask-install;
   exit 0;
 }
 
@@ -147,6 +159,16 @@ antibody-self-update()
   zsh -c "rm -f ~/.zcompdump && autoload -Uz compinit && compinit";
 }
 
+brew-install()
+{
+  brew install $BREW_INSTALLS;
+}
+
+brew-cask-install()
+{
+  brew cask install $BREW_CASK_INSTALLS;
+}
+
 # Entry
 
 set -e
@@ -164,6 +186,8 @@ main()
     chsh-zsh;
   elif [ "$1" == "antibody-update" ]; then
     antibody-update;
+  elif [ "$1" == "brew-packages" ]; then
+    brew-packages;
   elif [ "$1" == "cancel" ]; then
     cancel;
   else
