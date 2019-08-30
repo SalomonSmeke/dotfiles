@@ -46,30 +46,30 @@ cd dotfiles
 ./setup.sh antibody-update
 ```  
 
-**install some brew packages:**
+**install some brew 🍺 packages:**
 <details>
   <summary>these ones</summary>
 
   ## Tap:
-  [ack](https://github.com/beyondgrep/ack3) - 🧞 Excellent and human search tool.
-  [bat](https://github.com/sharkdp/bat) - 🦇 Who knew you needed a "better `cat`"?
-  [exa](https://github.com/ogham/exa) - 🤖 Same, but for `ls`.
-  [htop](https://github.com/hishamhm/htop) - 📊 Same, but for `top`.
-  [python](https://github.com/python/cpython) - 🐍 A programming/scripting language that ships with everything, but we want a newer version.
-  [sl](https://github.com/mtoyoda/sl) - 🚂 ls(1) backwards don't do it.
-  [tmux](https://github.com/tmux/tmux) - 🎛️ Screen, but better. Look [here for a cheatsheet](http://tmuxcheatsheet.com).
-  [vim](https://www.vim.org) - 👩‍🏫 Text editor of the past and future. [Hey nice another cheatsheet](https://vim.rtorr.com).
-  [asciinema](https://asciinema.org) - 📷 Record your shell and share it! [Get started with this, a guide](https://asciinema.org/docs/how-it-works).
-  [nvm](https://github.com/nvm-sh/nvm) - 🗂️ Manage node versions like a sane person.
-  [tree](http://mama.indstate.edu/users/ice/tree/) - 🌳 ~Look like a l33t hacker~ Print out a directory's structure.
+  [ack](https://github.com/beyondgrep/ack3) - 🧞 Excellent and human search tool.  
+  [bat](https://github.com/sharkdp/bat) - 🦇 Who knew you needed a "better `cat`"?  
+  [exa](https://github.com/ogham/exa) - 🤖 Same, but for `ls`.  
+  [htop](https://github.com/hishamhm/htop) - 📊 Same, but for `top`.  
+  [python](https://github.com/python/cpython) - 🐍 A programming/scripting language that ships with everything, but we want a newer version.  
+  [sl](https://github.com/mtoyoda/sl) - 🚂 ls(1) backwards don't do it.  
+  [tmux](https://github.com/tmux/tmux) - 🎛️ Screen, but better. Look [here for a cheatsheet](http://tmuxcheatsheet.com).  
+  [vim](https://www.vim.org) - 👩‍🏫 Text editor of the past and future. [Hey nice another cheatsheet](https://vim.rtorr.com).  
+  [asciinema](https://asciinema.org) - 📷 Record your shell and share it! [Get started with this, a guide](https://asciinema.org/docs/how-it-works).  
+  [nvm](https://github.com/nvm-sh/nvm) - 🗂️ Manage node versions like a sane person.  
+  [tree](http://mama.indstate.edu/users/ice/tree/) - 🌳 ~Look like a l33t hacker~ Print out a directory's structure.  
 
   ## Cask:
-  [atom](https://github.com/atom) - ⚛️ Speedy, hackable, super well maintained text editor. Like [VSCode](https://github.com/microsoft/vscode) but not ugly and with [tree-sitter](https://github.com/tree-sitter/tree-sitter) (just messing with you).
-  [disk-inventory-x](http://www.derlien.com) - 💽 Neat viz tool that shows you where your storage space went.
-  [firefox](https://www.mozilla.org/en-US/firefox/) - 🦊 The fastest browser that isn't data mining you (yet).
-  [image-optim](https://imageoptim.com/mac) - 🖼️ I think they put it best: "ImageOptim makes images load faster".
-  [onyx](https://www.titanium-software.fr/en/onyx.html) - ⛏️ MacOS toolkit.
-  [vlc](https://www.videolan.org/vlc/index.html) - 📺 Masterful media player (Remember the `codec` days? lol).
+  [atom](https://github.com/atom) - ⚛️ Speedy, hackable, super well maintained text editor. Like [VSCode](https://github.com/microsoft/vscode) but not ugly and with [tree-sitter](https://github.com/tree-sitter/tree-sitter) (just messing with you).  
+  [disk-inventory-x](http://www.derlien.com) - 💽 Neat viz tool that shows you where your storage space went.  
+  [firefox](https://www.mozilla.org/en-US/firefox/) - 🦊 The fastest browser that isn't data mining you (yet).  
+  [image-optim](https://imageoptim.com/mac) - 🖼️ I think they put it best: "ImageOptim makes images load faster".  
+  [onyx](https://www.titanium-software.fr/en/onyx.html) - ⛏️ MacOS toolkit.  
+  [vlc](https://www.videolan.org/vlc/index.html) - 📺 Masterful media player (Remember the `codec` days? lol).  
 
 </details>
 
