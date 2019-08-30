@@ -1,21 +1,22 @@
 #!/bin/bash
 
 # Constants
-
 PATH_TO_DOTFILES=$(pwd);
-PATH_TO_ZSHRC="${PATH_TO_DOTFILES}/.zshrc";
-PATH_TO_GITCONFIG="${PATH_TO_DOTFILES}/.gitconfig";
-PATH_TO_TMUXCONFIG="${PATH_TO_DOTFILES}/.tmux.conf";
-PATH_TO_ANTIGEN="${PATH_TO_DOTFILES}/antigen/antigen.zsh";
-
+FNAMES_TO_SYMLINK=(
+".zshrc"
+".gitconfig"
+".tmux.conf"
+);
+ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt"
 TARGET_DIR="$HOME";
+TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins.sh";
 
-ACTIONS=("symlink" "macos" "chsh-zsh" "antigen-update" "cancel");
+ACTIONS=("symlink" "macos" "chsh-zsh" "antibody-update" "cancel");
 DESCRIPTIONS=(
 "Symlink dotfiles to $HOME directory."
 "Install dotfiles to $HOME directory and ensure env is set up with zsh and brew."
 "Set zsh as default shell."
-"Update antigen."
+"Update/Install antibody."
 "No-op."
 );
 
@@ -33,9 +34,9 @@ symlink()
 
 macos()
 {
-  init-submodules;
   macos-prerequisites;
   symlink-all;
+  antibody-self-update;
   set-zsh-default;
   exit 0;
 }
@@ -46,15 +47,14 @@ chsh-zsh()
   exit 0;
 }
 
-antigen-update()
+antibody-update()
 {
-  init-submodules;
-  if [ check-antigen ] ; then
+  if [ check-antibody ] ; then
     if [ ! check-zsh ] ; then
       printf "No zsh found, exiting...";
       exit 1;
     fi
-    antigen-selfupdate-update;
+    antibody-self-update;
   fi
   exit 0;
 }
@@ -78,19 +78,18 @@ print-help()
   printf "\n";
 }
 
-init-submodules()
-{
-  printf "Initializing git submodules.\n";
-  git submodule update --init --recursive --remote;
-}
-
 symlink-all()
 {
   printf "Symlinking...\n";
   pushd ${TARGET_DIR} >/dev/null;
-  for opt in ${PATH_TO_ZSHRC} ${PATH_TO_GITCONFIG} ${PATH_TO_ANTIGEN} ${PATH_TO_TMUXCONFIG}; do
-    printf "\t%s\n" "${opt}";
-    ln -s "${opt}";
+  for opt in "${FNAMES_TO_SYMLINK[@]}"; do
+    printf "\t%s" "${opt}";
+    if [ -f "$TARGET_DIR/$opt" ] ; then
+      printf "\n\tFound! Not Overriding...";
+    else
+      ln -s "$PATH_TO_DOTFILES/$opt";
+    fi
+    printf "\n";
   done
   popd >/dev/null;
 }
@@ -113,9 +112,9 @@ macos-prerequisites()
   fi
 }
 
-check-antigen()
+check-antibody()
 {
-  if [ -f "$~/antigen.zsh" ]; then return 1; else return 0; fi;
+  if [ command -v antibody ]; then return 1; else return 0; fi;
 }
 
 check-zsh()
@@ -138,9 +137,14 @@ install-zsh()
   brew install zsh;
 }
 
-antigen-selfupdate-update()
+antibody-self-update()
 {
-  zsh -c "source ~/.zshrc && antigen selfupdate && antigen update && antigen cleanup;"
+  if [ ! check-antibody ] ; then
+    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin;
+  fi
+  zsh -c "autoload -Uz compinit && compinit && antibody bundle < ${ANTIBODY_PLUGIN_LIST_PATH} > ${TARGET_ANTIBODY_PATH}";
+  zsh -c "autoload -Uz compinit && compinit && antibody update";
+  zsh -c "rm -f ~/.zcompdump && compinit";
 }
 
 # Entry
@@ -158,8 +162,8 @@ main()
     macos;
   elif [ "$1" == "chsh-zsh" ]; then
     chsh-zsh;
-  elif [ "$1" == "antigen-update" ]; then
-    antigen-update;
+  elif [ "$1" == "antibody-update" ]; then
+    antibody-update;
   elif [ "$1" == "cancel" ]; then
     cancel;
   else

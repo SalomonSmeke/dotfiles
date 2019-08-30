@@ -1,0 +1,27 @@
+# Oh my zsh pre-requisites.
+SalomonSmeke/oh-my-zsh path:lib
+
+# Prompt to update bundles
+unixorn/autoupdate-antigen.zshplugin
+
+# Color/highlighting related things
+zsh-users/zsh-syntax-highlighting
+chrissicool/zsh-256color
+zuxfoucault/colored-man-pages_mod
+zpm-zsh/colorize
+
+# Completion
+SalomonSmeke/oh-my-zsh path:plugins/gitfast
+
+# Human
+jedahan/geometry-hydrate
+MichaelAquilina/zsh-you-should-use
+
+# Theme
+SalomonSmeke/oh-my-zsh path:themes/theunraveler.zsh-theme
+
+# Broken - But I fixed it :)
+SalomonSmeke/oh-my-zsh path:plugins/wd
+
+# Testing
+# paulmelnikow/zsh-startup-timer
