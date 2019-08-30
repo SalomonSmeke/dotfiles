@@ -10,8 +10,9 @@ inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe
 
 [Brew](https://brew.sh) - 👌 macos package manager.  
 [Zsh](http://www.zsh.org) - 💪 shell.  
-[Antigen](http://antigen.sharats.me) - 👏 plugin manager for zsh.  
+[Antibody](https://getantibody.github.io) - 🏎️ plugin manager for zsh.  
 [Oh My Zsh](https://ohmyz.sh) - 🙏 zsh config framework and all around place-where-zsh-stuff-lives.  
+[Various zsh plugins](https://github.com/SalomonSmeke/dotfiles/blob/master/.zsh_antibody_plugins.txt) - 📖 Look in here for a full list. (Attribution soon!)
 
 ## usage
 
@@ -40,9 +41,9 @@ cd dotfiles
 ./setup.sh symlink
 ```
 
-**update antigen:**  
+**update antibody/modules:**  
 ```shell
-./setup.sh antigen-update
+./setup.sh antibody-update
 ```  
 
 **print usage:**  
