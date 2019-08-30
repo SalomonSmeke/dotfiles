@@ -50,7 +50,7 @@ cd dotfiles
 <details>
   <summary>these ones</summary>
 
-  ## Tap:
+  ## tap
   [ack](https://github.com/beyondgrep/ack3) - 🧞 Excellent and human search tool.  
   [bat](https://github.com/sharkdp/bat) - 🦇 Who knew you needed a "better `cat`"?  
   [exa](https://github.com/ogham/exa) - 🤖 Same, but for `ls`.  
@@ -63,7 +63,7 @@ cd dotfiles
   [nvm](https://github.com/nvm-sh/nvm) - 🗂️ Manage node versions like a sane person.  
   [tree](http://mama.indstate.edu/users/ice/tree/) - 🌳 ~Look like a l33t hacker~ Print out a directory's structure.  
 
-  ## Cask:
+  ## cask
   [atom](https://github.com/atom) - ⚛️ Speedy, hackable, super well maintained text editor. Like [VSCode](https://github.com/microsoft/vscode) but not ugly and with [tree-sitter](https://github.com/tree-sitter/tree-sitter) (just messing with you).  
   [disk-inventory-x](http://www.derlien.com) - 💽 Neat viz tool that shows you where your storage space went.  
   [firefox](https://www.mozilla.org/en-US/firefox/) - 🦊 The fastest browser that isn't data mining you (yet).  
