@@ -72,6 +72,7 @@ cd dotfiles
   [vlc](https://www.videolan.org/vlc/index.html) - 📺 Masterful media player (Remember the `codec` days? lol).
 
 </details>
+
 ```shell
 ./setup.sh brew-packages
 ```
