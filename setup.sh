@@ -144,7 +144,7 @@ antibody-self-update()
   fi
   zsh -c "autoload -Uz compinit && compinit && antibody bundle < ${ANTIBODY_PLUGIN_LIST_PATH} > ${TARGET_ANTIBODY_PATH}";
   zsh -c "autoload -Uz compinit && compinit && antibody update";
-  zsh -c "rm -f ~/.zcompdump && compinit";
+  zsh -c "rm -f ~/.zcompdump && autoload -Uz compinit && compinit";
 }
 
 # Entry
