@@ -149,10 +149,15 @@ install-zsh()
   brew install zsh;
 }
 
+install-antibody()
+{
+  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin;
+}
+
 antibody-self-update()
 {
   if [ ! check-antibody ] ; then
-    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin;
+    install-antibody;
   fi
   zsh -c "autoload -Uz compinit && compinit && antibody bundle < ${ANTIBODY_PLUGIN_LIST_PATH} > ${TARGET_ANTIBODY_PATH}";
   zsh -c "autoload -Uz compinit && compinit && antibody update";
