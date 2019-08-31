@@ -28,7 +28,7 @@ DESCRIPTIONS=(
 
 symlink()
 {
-  if [ ! check-zsh ] ; then
+  if ! check-command "zsh" ; then
     printf "No zsh found, exiting...";
     exit 1;
   fi
@@ -53,13 +53,11 @@ chsh-zsh()
 
 antibody-update()
 {
-  if [ check-antibody ] ; then
-    if [ ! check-zsh ] ; then
-      printf "No zsh found, exiting...";
-      exit 1;
-    fi
-    antibody-self-update;
+  if ! check-command "zsh" ; then
+    printf "No zsh found, exiting...";
+    exit 1;
   fi
+  antibody-self-update;
   exit 0;
 }
 
@@ -114,29 +112,21 @@ set-zsh-default()
 
 macos-prerequisites()
 {
-  if [ ! check-zsh ] ; then
-    if [ ! check-brew ] ; then
-      printf "No Brew found, installing...\n";
-      install-brew;
-    fi
+  if ! check-command "brew" ; then
+    printf "No Brew found, installing...\n";
+    install-brew;
+  fi
+  if ! check-command "zsh" ; then
     printf "No zsh found, installing...\n";
     install-zsh;
   fi
 }
 
-check-antibody()
+check-command()
 {
-  if [ command -v antibody ]; then return 1; else return 0; fi;
-}
-
-check-zsh()
-{
-  if [ -f "$(which zsh)" ]; then return 1; else return 0; fi;
-}
-
-check-brew()
-{
-  if [ -f "$(which brew)" ]; then return 1; else return 0; fi;
+  if ! command -v "$1" >/dev/null; then
+    return 1;
+  fi
 }
 
 install-brew()
@@ -149,10 +139,15 @@ install-zsh()
   brew install zsh;
 }
 
+install-antibody()
+{
+  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin;
+}
+
 antibody-self-update()
 {
-  if [ ! check-antibody ] ; then
-    curl -sfL git.io/antibody | sh -s - -b /usr/local/bin;
+  if ! check-command "antibody" ; then
+    install-antibody;
   fi
   zsh -c "autoload -Uz compinit && compinit && antibody bundle < ${ANTIBODY_PLUGIN_LIST_PATH} > ${TARGET_ANTIBODY_PATH}";
   zsh -c "autoload -Uz compinit && compinit && antibody update";
