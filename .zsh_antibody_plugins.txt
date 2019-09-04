@@ -1,5 +1,5 @@
 # Oh my zsh pre-requisites.
-SalomonSmeke/oh-my-zsh path:lib
+robbyrussell/oh-my-zsh path:lib
 
 # Color/highlighting related things
 zsh-users/zsh-syntax-highlighting
@@ -8,16 +8,16 @@ zuxfoucault/colored-man-pages_mod
 zpm-zsh/colorize
 
 # Completion
-SalomonSmeke/oh-my-zsh path:plugins/gitfast
+robbyrussell/oh-my-zsh path:plugins/gitfast
 
 # Human
 MichaelAquilina/zsh-you-should-use
 
 # Theme
-SalomonSmeke/oh-my-zsh path:themes/theunraveler.zsh-theme
+robbyrussell/oh-my-zsh path:themes/theunraveler.zsh-theme
 
-# Broken - But I fixed it :)
-SalomonSmeke/oh-my-zsh path:plugins/wd
+# Neat
+robbyrussell/oh-my-zsh path:plugins/wd
 
 # Testing
 # paulmelnikow/zsh-startup-timer
