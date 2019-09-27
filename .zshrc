@@ -10,7 +10,6 @@ fi
 source ~/.zsh_antibody_plugins.sh;
 
 # Config
-export DISABLE_AUTO_TITLE="true"
 export COMPLETION_WAITING_DOTS="true"
 
 # After-hook
