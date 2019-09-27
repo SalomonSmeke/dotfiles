@@ -11,8 +11,9 @@ ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt";
 TARGET_DIR="$HOME";
 TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins.sh";
 
-BREW_INSTALLS="ack bat exa htop python sl tmux vim asciinema nvm tree";
+BREW_INSTALLS="ack bat exa htop python sl tmux vim asciinema nvm tree grep";
 BREW_CASK_INSTALLS="atom disk-inventory-x firefox imageoptim onyx vlc";
+MACOS_OLD_VERSIONS="grep vim";
 
 ACTIONS=("symlink" "macos" "chsh-zsh" "antibody-update" "brew-packages" "cancel");
 DESCRIPTIONS=(
@@ -116,6 +117,7 @@ macos-prerequisites()
     printf "No Brew found, installing...\n";
     install-brew;
   fi
+  brew install $MACOS_OLD_VERSIONS;
   if ! check-command "zsh" ; then
     printf "No zsh found, installing...\n";
     install-zsh;

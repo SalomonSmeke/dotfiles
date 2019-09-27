@@ -1,5 +1,5 @@
-# Oh my zsh pre-requisites.
-robbyrussell/oh-my-zsh path:lib
+# Oh my zsh pre-requisites. Use my own for a slight speedup.
+SalomonSmeke/oh-my-zsh path:lib
 
 # Color/highlighting related things
 zsh-users/zsh-syntax-highlighting
