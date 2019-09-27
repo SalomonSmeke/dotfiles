@@ -1,5 +1,33 @@
-# Oh my zsh pre-requisites. Use my own for a slight speedup.
-SalomonSmeke/oh-my-zsh path:lib
+# Nice Copy
+robbyrussell/oh-my-zsh path:lib/clipboard.zsh
+# Plugin permission safety
+robbyrussell/oh-my-zsh path:lib/compfix.zsh
+# Completion support
+robbyrussell/oh-my-zsh path:lib/completion.zsh
+# Never autocorrect some stuff
+robbyrussell/oh-my-zsh path:lib/correction.zsh
+# CD Niceties
+robbyrussell/oh-my-zsh path:lib/directories.zsh
+# Misc useful fns
+robbyrussell/oh-my-zsh path:lib/functions.zsh
+# Git support for theming etc
+robbyrussell/oh-my-zsh path:lib/git.zsh
+# Grep alias with color and ignores vc. Assume modern grep.
+SalomonSmeke/oh-my-zsh path:lib/grep.zsh
+# ZSH History
+robbyrussell/oh-my-zsh path:lib/history.zsh
+# Keybinds
+robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
+# Honestly no idea
+robbyrussell/oh-my-zsh path:lib/misc.zsh
+# Prompt functions for theme
+robbyrussell/oh-my-zsh path:lib/prompt_info_functions.zsh
+# Easy colors, used everywhere
+robbyrussell/oh-my-zsh path:lib/spectrum.zsh
+# Control over title bar
+robbyrussell/oh-my-zsh path:lib/termsupport.zsh
+# More themeing functions
+robbyrussell/oh-my-zsh path:lib/theme-and-appearance.zsh
 
 # Color/highlighting related things
 zsh-users/zsh-syntax-highlighting
