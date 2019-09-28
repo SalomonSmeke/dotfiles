@@ -4,7 +4,7 @@
 
 [dotfiles](https://askubuntu.com/questions/94780/what-are-dot-files), and some scripts to automate macos setup. Now very fast!
 
-```
+```bash
 beep boop
 [~] repeat 3 {time zsh -i -c exit}                                                                
 zsh -i -c exit  0.04s user 0.02s system 94% cpu 0.064 total
@@ -24,15 +24,15 @@ inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe
 <details>
   <summary>these ones</summary>
 
-  - [robbyrussell/lib](https://github.com/robbyrussell/oh-my-zsh/tree/master/lib) - Quite a few of these actually.  
-  - [SalomonSmeke/grep](https://github.com/SalomonSmeke/oh-my-zsh/blob/master/lib/grep.zsh) - Faster copy from robby/lib.  
-  - [zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - "Fish shell-like syntax highlighting for Zsh."  
-  - [robbyrussell/plugins/colored-man-pages](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/colored-man-pages) - Color for man pages.  
-  - [zpm-zsh/colorize](https://github.com/zpm-zsh/colorize) - Default utilities to color output.  
-  - [robbyrussell/plugins/gitfast](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/gitfast) - Fast and up to date git plugin.  
-  - [MichaelAquilina/zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use) - Tells you when you have an alias set up for something you just did.  
-  - [robbyrussell/themes/theunraveler.zsh-theme](https://github.com/robbyrussell/oh-my-zsh/tree/master/themes/theunraveler.zsh-theme) - A _BEAUTIFUL_ zsh theme. Honestly the best one.  
-  - [robbyrussell/plugins/wd](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/wd) - Warp Directory. Like all those CD aliases you have, but good.  
+- [robbyrussell/lib](https://github.com/robbyrussell/oh-my-zsh/tree/master/lib) - Quite a few of these actually.  
+- [SalomonSmeke/grep](https://github.com/SalomonSmeke/oh-my-zsh/blob/master/lib/grep.zsh) - Faster copy from robby/lib.  
+- [zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - "Fish shell-like syntax highlighting for Zsh."  
+- [robbyrussell/plugins/colored-man-pages](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/colored-man-pages) - Color for man pages.  
+- [zpm-zsh/colorize](https://github.com/zpm-zsh/colorize) - Default utilities to color output.  
+- [robbyrussell/plugins/gitfast](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/gitfast) - Fast and up to date git plugin.  
+- [MichaelAquilina/zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use) - Tells you when you have an alias set up for something you just did.  
+- [robbyrussell/themes/theunraveler.zsh-theme](https://github.com/robbyrussell/oh-my-zsh/tree/master/themes/theunraveler.zsh-theme) - A _BEAUTIFUL_ zsh theme. Honestly the best one.  
+- [robbyrussell/plugins/wd](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/wd) - Warp Directory. Like all those CD aliases you have, but good.  
 </details>
 
 ## usage
