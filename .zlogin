@@ -1,8 +1,8 @@
 # Execute code in the background to not affect the current session
 (
-  # Compile zcompdump, if modified, to increase startup speed.
-  zcompdump="${HOME}/.zcompdump"
-  if [[ -s "$zcompdump" && (! -s "${zcompdump}.zwc" || "$zcompdump" -nt "${zcompdump}.zwc") ]]; then
-    zcompile "$zcompdump"
+  # Compile .zshrc, if modified, to increase startup speed.
+  zshrc="${HOME}/.zshrc"
+  if [[ -s "$zshrc" && (! -s "${zshrc}.zwc" || "$zshrc" -nt "${zshrc}.zwc") ]]; then
+    zcompile "$zshrc"
   fi
 ) &!

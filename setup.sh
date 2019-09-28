@@ -2,6 +2,7 @@
 
 # Constants
 PATH_TO_DOTFILES=$(pwd);
+TARGET_DIR="$HOME";
 FNAMES_TO_SYMLINK=(
 ".zshrc"
 ".gitconfig"
@@ -9,8 +10,8 @@ FNAMES_TO_SYMLINK=(
 ".zlogin"
 );
 ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt";
-TARGET_DIR="$HOME";
 TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins.sh";
+
 
 BREW_INSTALLS="ack bat exa htop python sl tmux vim asciinema nvm tree grep";
 BREW_CASK_INSTALLS="atom disk-inventory-x firefox imageoptim onyx vlc";
@@ -18,8 +19,8 @@ MACOS_OLD_VERSIONS="grep vim";
 
 ACTIONS=("symlink" "macos" "chsh-zsh" "antibody-update" "brew-packages" "cancel");
 DESCRIPTIONS=(
-"Symlink dotfiles to $HOME directory."
-"Install dotfiles to $HOME directory and ensure env is set up with zsh and brew."
+"Symlink dotfiles to $TARGET_DIR directory."
+"Install dotfiles to $TARGET_DIR directory and ensure env is set up with zsh and brew."
 "Set zsh as default shell."
 "Update/Install antibody."
 "Install some nice brew packages (cask and regular)."
@@ -155,8 +156,8 @@ antibody-self-update()
   zsh -c "autoload -Uz compinit && compinit & rm -rf `antibody home`";
   zsh -c "autoload -Uz compinit && compinit && antibody bundle < ${ANTIBODY_PLUGIN_LIST_PATH} > ${TARGET_ANTIBODY_PATH}";
   zsh -c "autoload -Uz compinit && compinit && antibody update";
-  # This is a hack for WD.
-  zsh -c "rm -f ~/.zcompdump && autoload -Uz compinit && compinit && source ${TARGET_ANTIBODY_PATH} && rm -f ~/.zcompdump && autoload -Uz compinit && compinit";
+  # This looks strange, but allows us to never compinit.
+  zsh -c "rm -f ${TARGET_DIR}/.zcompdump && autoload -Uz compinit && compinit && source ${TARGET_ANTIBODY_PATH} && rm -f ${TARGET_DIR}/.zcompdump && autoload -Uz compinit && compinit && zcompile ${TARGET_DIR}/.zcompdump && zcompile ${TARGET_DIR}/.zshrc";
 }
 
 brew-install()
