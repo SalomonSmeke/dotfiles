@@ -110,4 +110,4 @@ cd dotfiles
 
 ## ech
 
-[Copyright (c)](https://github.com/SalomonSmeke/dotfiles/blob/master/LICENSE) 2018 [Salomon Smeke](https://ssmeke.io) with an [MIT License](https://github.com/SalomonSmeke/dotfiles/blob/master/LICENSE)
+[Copyright (c)](https://github.com/SalomonSmeke/dotfiles/blob/master/LICENSE) 2018-2019 [Salomon Smeke Cohen](https://ssmeke.io) with an [MIT License](https://github.com/SalomonSmeke/dotfiles/blob/master/LICENSE)
