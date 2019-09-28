@@ -20,7 +20,20 @@ inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe
 [Zsh](http://www.zsh.org) - 💪 shell.  
 [Antibody](https://getantibody.github.io) - 🏎️ plugin manager for zsh.  
 [Oh My Zsh](https://ohmyz.sh) - 🙏 zsh config framework and all around place-where-zsh-stuff-lives.  
-[Various zsh plugins](https://github.com/SalomonSmeke/dotfiles/blob/master/.zsh_antibody_plugins.txt) - 📖 Look in here for a full list. (Attribution soon!)
+[Various zsh plugins](https://github.com/SalomonSmeke/dotfiles/blob/master/.zsh_antibody_plugins.txt) - 📖 Full list below!
+<details>
+  <summary>these ones</summary>
+
+  - [robbyrussell/lib](https://github.com/robbyrussell/oh-my-zsh/tree/master/lib) - Quite a few of these actually.  
+  - [SalomonSmeke/grep](https://github.com/SalomonSmeke/oh-my-zsh/blob/master/lib/grep.zsh) - Faster copy from robby/lib.  
+  - [zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - "Fish shell-like syntax highlighting for Zsh."  
+  - [robbyrussell/plugins/colored-man-pages](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/colored-man-pages) - Color for man pages.  
+  - [zpm-zsh/colorize](https://github.com/zpm-zsh/colorize) - Default utilities to color output.  
+  - [robbyrussell/plugins/gitfast](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/gitfast) - Fast and up to date git plugin.  
+  - [MichaelAquilina/zsh-you-should-use](https://github.com/MichaelAquilina/zsh-you-should-use) - Tells you when you have an alias set up for something you just did.  
+  - [robbyrussell/themes/theunraveler.zsh-theme](https://github.com/robbyrussell/oh-my-zsh/tree/master/themes/theunraveler.zsh-theme) - A _BEAUTIFUL_ zsh theme. Honestly the best one.  
+  - [robbyrussell/plugins/wd](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/wd) - Warp Directory. Like all those CD aliases you have, but good.  
+</details>
 
 ## usage
 
