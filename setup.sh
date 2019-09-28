@@ -7,10 +7,9 @@ FNAMES_TO_SYMLINK=(
 ".zshrc"
 ".gitconfig"
 ".tmux.conf"
-".zlogin"
 );
 ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt";
-TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins.sh";
+TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins";
 
 
 BREW_INSTALLS="ack bat exa htop python sl tmux vim asciinema nvm tree grep";
