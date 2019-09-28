@@ -7,6 +7,7 @@ compinit -C;
 
 # Config
 export COMPLETION_WAITING_DOTS="true"
+setopt interactivecomments
 
 # After-hook
 if [ -f ~/.zshrc_local_after ]; then

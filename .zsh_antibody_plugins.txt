@@ -1,7 +1,5 @@
 # Nice Copy
 robbyrussell/oh-my-zsh path:lib/clipboard.zsh
-# Plugin permission safety
-robbyrussell/oh-my-zsh path:lib/compfix.zsh
 # Completion support
 robbyrussell/oh-my-zsh path:lib/completion.zsh
 # Never autocorrect some stuff
@@ -18,8 +16,6 @@ SalomonSmeke/oh-my-zsh path:lib/grep.zsh
 robbyrussell/oh-my-zsh path:lib/history.zsh
 # Keybinds
 robbyrussell/oh-my-zsh path:lib/key-bindings.zsh
-# Honestly no idea
-robbyrussell/oh-my-zsh path:lib/misc.zsh
 # Prompt functions for theme
 robbyrussell/oh-my-zsh path:lib/prompt_info_functions.zsh
 # Easy colors, used everywhere
@@ -31,7 +27,6 @@ robbyrussell/oh-my-zsh path:lib/theme-and-appearance.zsh
 
 # Color/highlighting related things
 zsh-users/zsh-syntax-highlighting
-chrissicool/zsh-256color
 zuxfoucault/colored-man-pages_mod
 zpm-zsh/colorize
 
