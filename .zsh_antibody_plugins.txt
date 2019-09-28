@@ -27,7 +27,7 @@ robbyrussell/oh-my-zsh path:lib/theme-and-appearance.zsh
 
 # Color/highlighting related things
 zsh-users/zsh-syntax-highlighting
-zuxfoucault/colored-man-pages_mod
+robbyrussell/oh-my-zsh path:plugins/colored-man-pages
 zpm-zsh/colorize
 
 # Completion
