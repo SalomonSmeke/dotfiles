@@ -24,11 +24,11 @@ inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe
 <details>
   <summary>these ones</summary>
 
-  ## Lib stuff that other plugins depend on.
+  ## Lib stuff that other plugins depend on
   [robbyrussell/lib](https://github.com/robbyrussell/oh-my-zsh/tree/master/lib) - Quite a few of these actually.  
   [SalomonSmeke/grep](https://github.com/SalomonSmeke/oh-my-zsh/blob/master/lib/grep.zsh) - Faster copy from robby/lib.  
   
-  ## Neato plugins.
+  ## Neato plugins
   [zsh-users/zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - "Fish shell-like syntax highlighting for Zsh."  
   [robbyrussell/plugins/colored-man-pages](https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins/colored-man-pages) - Color for man pages.  
   [zpm-zsh/colorize](https://github.com/zpm-zsh/colorize) - Default utilities to color output.  
