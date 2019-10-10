@@ -6,10 +6,10 @@
 
 ```bash
 beep boop
-[~] repeat 3 {time zsh -i -c exit}                                                                
-zsh -i -c exit  0.04s user 0.02s system 94% cpu 0.064 total
-zsh -i -c exit  0.04s user 0.02s system 95% cpu 0.062 total
-zsh -i -c exit  0.04s user 0.02s system 94% cpu 0.065 total
+[~] repeat 3 {time zsh -il -c exit}                                                                
+zsh -i -c exit  0.03s user 0.02s system 97% cpu 0.056 total
+zsh -i -c exit  0.03s user 0.02s system 93% cpu 0.053 total
+zsh -i -c exit  0.03s user 0.02s system 94% cpu 0.055 total
 ```
 
 inspired by [gmoe](https://github.com/gmoe)'s [dotfiles](https://github.com/gmoe/dotfiles), a 🍯🐝/🍯🐝 guy.
