@@ -159,7 +159,7 @@ antibody-compinit()
     autoload -Uz compinit;
     compinit;
     zcompile ${TARGET_DIR}/.zcompdump;
-    zcompile ${TARGET_DIR}/.zshrc;
+    zcompile ${TARGET_ANTIBODY_PATH};
     compinit;
   )";
 }

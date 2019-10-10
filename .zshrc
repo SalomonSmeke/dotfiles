@@ -11,5 +11,5 @@ setopt interactivecomments
 
 # After-hook
 if [ -f ~/.zshrc_local_after ]; then
-  . ~/.zshrc_local_after
+  . ~/.zshrc_local_after;
 fi
