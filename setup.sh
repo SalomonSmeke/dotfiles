@@ -160,6 +160,7 @@ antibody-compinit()
     compinit;
     zcompile ${TARGET_DIR}/.zcompdump;
     zcompile ${TARGET_DIR}/.zshrc;
+    compinit;
   )";
 }
 
@@ -167,13 +168,19 @@ antibody-optimize()
 {
   echo "Optimizing Antibody...";
   zsh -c "(
+    autoload -Uz compinit;
+    compinit -C;
     pushd $(antibody home) >/dev/null;
     local LC_BACKUP=\${LC_ALL};
     local LANG_BACKUP=\${LANG};
     LC_ALL=C;
     LANG=C;
-    for i in **/*.zsh; do
-      sed -i '' '/^[[:blank:]]*#/d' \"\$i\";
+    for i in **/*.*; do
+      # sed -i '' '/^[[:blank:]]*#/d' \"\$i\" 2>/dev/null; # if a line is a comment remove it, this breaks completion somehow.
+      sed -i '' '/^[[:blank:]]*\$/d' \"\$i\" 2>/dev/null; # if a line is blank remove it.
+    done
+    for i in **/*.*; do
+      zcompile \"\$i\" 2>/dev/null; # Compile the plugins.
     done;
     LC_ALL=\${LC_BACKUP};
     LANG=\${LANG_BACKUP};
