@@ -13,7 +13,7 @@ TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins";
 
 
 BREW_INSTALLS="ack bat exa htop python sl tmux vim asciinema nvm tree grep";
-BREW_CASK_INSTALLS="atom disk-inventory-x firefox imageoptim onyx vlc";
+BREW_CASK_INSTALLS="atom firefox imageoptim onyx vlc";
 MACOS_OLD_VERSIONS="zsh grep vim";
 
 ACTIONS=("symlink" "macos" "chsh-zsh" "antibody-update" "brew-packages" "cancel");
