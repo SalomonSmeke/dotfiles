@@ -56,6 +56,7 @@ cd dotfiles
 ```  
 
 **install the dotfiles on macos:**  
+_note: this will also update zsh, grep and vim. the built-in macos versions are quite outdated_.  
 ```shell
 ./setup.sh macos
 ```  
