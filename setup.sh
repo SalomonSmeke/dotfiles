@@ -147,16 +147,49 @@ install-antibody()
   curl -sfL git.io/antibody | sh -s - -b /usr/local/bin;
 }
 
+antibody-compinit()
+{
+  # This looks strange, but allows us to never compinit.
+  zsh -c "(
+    rm -f ${TARGET_DIR}/.zcompdump;
+    autoload -Uz compinit;
+    compinit;
+    source ${TARGET_ANTIBODY_PATH};
+    rm -f ${TARGET_DIR}/.zcompdump;
+    autoload -Uz compinit;
+    compinit;
+    zcompile ${TARGET_DIR}/.zcompdump;
+    zcompile ${TARGET_DIR}/.zshrc;
+  )";
+}
+
+antibody-optimize()
+{
+  echo "Optimizing Antibody...";
+  zsh -c "(
+    pushd $(antibody home) >/dev/null;
+    local LC_BACKUP=\${LC_ALL};
+    local LANG_BACKUP=\${LANG};
+    LC_ALL=C;
+    LANG=C;
+    for i in **/*.zsh; do
+      sed -i '' '/^[[:blank:]]*#/d' \"\$i\";
+    done;
+    LC_ALL=\${LC_BACKUP};
+    LANG=\${LANG_BACKUP};
+  )";
+}
+
 antibody-self-update()
 {
   if ! check-command "antibody" ; then
     install-antibody;
   fi
-  zsh -c "autoload -Uz compinit && compinit & rm -rf `antibody home`";
+  zsh -c "autoload -Uz compinit && compinit & rm -rf $(antibody home)";
   zsh -c "autoload -Uz compinit && compinit && antibody bundle < ${ANTIBODY_PLUGIN_LIST_PATH} > ${TARGET_ANTIBODY_PATH}";
   zsh -c "autoload -Uz compinit && compinit && antibody update";
-  # This looks strange, but allows us to never compinit.
-  zsh -c "rm -f ${TARGET_DIR}/.zcompdump && autoload -Uz compinit && compinit && source ${TARGET_ANTIBODY_PATH} && rm -f ${TARGET_DIR}/.zcompdump && autoload -Uz compinit && compinit && zcompile ${TARGET_DIR}/.zcompdump && zcompile ${TARGET_DIR}/.zshrc";
+  antibody-optimize;
+  antibody-compinit;
 }
 
 brew-install()
