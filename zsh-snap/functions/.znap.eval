@@ -1,0 +1,59 @@
+#!/bin/zsh
+# cache & eval output of command
+# args: ( <repo> | <name> ) <command>
+zmodload -F zsh/files b:zf_mkdir
+
+if (( $# < 2 )); then
+  print -u2 'znap eval: not enough arguments'
+  .znap.help eval
+  return $(( sysexits[(i)USAGE] + 63 ))
+fi
+
+.znap.eval.generate() {
+  (
+    private __repo=$1 __cache_file=$2
+    shift 2
+    private __header="#${(q)@}"
+
+    local __line
+    [[ -r $__cache_file ]] &&
+        IFS='' read -r __line < $__cache_file
+
+    if [[ $__line != $__header ||
+        ( -d $__repo && -f $__repo/${GIT_DIR:-.git}/index &&
+            $__repo/${GIT_DIR:-.git}/index -nt $__cache_file ) ]]; then
+      [[ -d $__repo ]] &&
+          cd -q -- $__repo
+      print -r -- "$__header" >| $__cache_file
+      eval "$@" >>| $__cache_file
+      emulate zsh -c "zcompile -UR ${(q)__cache_file}" &&
+          ..znap.chmod 640 $__cache_file.zwc
+    fi
+  )
+}
+
+private __repo=~znap/$1 __cache_dir=$XDG_CACHE_HOME/zsh-snap/eval
+[[ $1 == */* ]] &&
+    __repo=~[$1]
+shift
+
+zf_mkdir -pm 0700 $__cache_dir
+private __cache_file=$__cache_dir/${__repo:t}.zsh
+
+if [[ -r $__cache_file ]]; then
+  .znap.eval.generate "$__repo" "$__cache_file" "$@" &|
+else
+  print -r "znap eval: generating cache for $*"
+  .znap.eval.generate "$__repo" "$__cache_file" "$@"
+fi
+
+# Wrap in a named function for profiling purposes.
+.znap.eval:${__cache_file:t}() {
+  . "$1"
+}
+{
+  .znap.eval:${__cache_file:t} "$__cache_file"
+} always {
+  TRY_BLOCK_ERROR=
+  unfunction .znap.eval:${__cache_file:t}
+}
