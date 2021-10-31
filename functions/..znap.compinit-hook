@@ -1,0 +1,32 @@
+#!/bin/zsh
+autoload -Uz add-zsh-hook
+
+add-zsh-hook -d precmd ..znap.compinit-hook
+unfunction ..znap.compinit-hook
+
+zmodload zsh/complist
+if ! [[ -v _comp_setup && -f $_comp_dumpfile ]]; then
+  unfunction compdef compinit 2>/dev/null
+  autoload -Uz compinit
+  bindkey() {:}
+  {
+    compinit -C -d $_comp_dumpfile
+  } always {
+    unfunction bindkey
+  }
+  [[ -r $_comp_dumpfile ]] &&
+      (
+        emulate -L zsh
+        zcompile -UR $_comp_dumpfile &&
+            ..znap.chmod 640 $_comp_dumpfile.zwc
+      ) &|
+fi
+
+private args=
+for args in "$_znap_compdef[@]"; do
+  eval "compdef $args"
+done
+
+unset _znap_compdef
+
+compinit() {:}
