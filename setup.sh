@@ -9,57 +9,20 @@ FNAMES_TO_SYMLINK=(
 ".tmux.conf"
 );
 ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt";
-TARGET_ANTIBODY_PATH="$TARGET_DIR/.zsh_antibody_plugins";
 
-
-BREW_INSTALLS="ack bat exa htop python sl tmux vim asciinema nvm tree grep";
-BREW_CASK_INSTALLS="atom firefox imageoptim onyx vlc";
-MACOS_OLD_VERSIONS="zsh grep vim";
-
-ACTIONS=("symlink" "macos" "chsh-zsh" "antibody-update" "brew-packages" "cancel");
+ACTIONS=("init" "cancel");
 DESCRIPTIONS=(
-"Symlink dotfiles to $TARGET_DIR directory."
-"Install dotfiles to $TARGET_DIR directory and ensure env is set up with zsh and brew."
-"Set zsh as default shell."
-"Update/Install antibody."
-"Install some nice brew packages (cask and regular)."
+"Install dotfiles to $TARGET_DIR."
 "No-op."
 );
 
 # Actions
 
-symlink()
+init()
 {
-  if ! check-command "zsh" ; then
-    printf "No zsh found, exiting...";
-    exit 1;
-  fi
-  symlink-all;
-  exit 0;
-}
-
-macos()
-{
-  macos-prerequisites;
-  symlink-all;
-  antibody-self-update;
-  set-zsh-default;
-  exit 0;
-}
-
-chsh-zsh()
-{
-  set-zsh-default;
-  exit 0;
-}
-
-antibody-update()
-{
-  if ! check-command "zsh" ; then
-    printf "No zsh found, exiting...";
-    exit 1;
-  fi
-  antibody-self-update;
+  zsh-install;
+  symlink;
+  zsh-snap-install;
   exit 0;
 }
 
@@ -68,29 +31,28 @@ cancel()
   exit 0;
 }
 
-brew-packages()
-{
-  macos-prerequisites;
-  brew-install;
-  brew-cask-install;
-  exit 0;
-}
-
 # Helpers
 
-print-help()
+check-command()
 {
-  printf "\nSalomon Smeke Dotfiles Setup\n";
-  printf "\nCommands:\n";
-  i=0;
-  for opt in "${ACTIONS[@]}"; do
-    printf "\t%s - %s\n" "${opt}" "${DESCRIPTIONS[i]}";
-    i=$((i+1));
-  done
-  printf "\n";
+  if ! command -v "$1" >/dev/null; then
+    return 1;
+  fi
 }
 
-symlink-all()
+zsh-install()
+{
+  if check-command "brew" ; then
+    brew install zsh;
+  elif ! check-command "zsh" ; then
+    printf "No Brew found, please install zsh manually...\n";
+    exit 1;
+  fi
+  printf "Setting zsh as your default shell, this might require your password.\n\t";
+  sudo chsh -s $(which zsh) $(whoami);
+}
+
+symlink()
 {
   printf "Symlinking...\n";
   pushd ${TARGET_DIR} >/dev/null;
@@ -106,110 +68,26 @@ symlink-all()
   popd >/dev/null;
 }
 
-set-zsh-default()
+zsh-snap-install()
 {
-  printf "Setting zsh as your default shell, this might require your password.\n\t";
-  sudo chsh -s $(which zsh) $(whoami);
-}
-
-macos-prerequisites()
-{
-  if ! check-command "brew" ; then
-    printf "No Brew found, installing...\n";
-    install-brew;
-  fi
-  brew install $MACOS_OLD_VERSIONS;
-  if ! check-command "zsh" ; then
-    printf "No zsh found, installing...\n";
-    install-zsh;
-  fi
-}
-
-check-command()
-{
-  if ! command -v "$1" >/dev/null; then
-    return 1;
-  fi
-}
-
-install-brew()
-{
-  /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)";
-}
-
-install-zsh()
-{
-  brew install zsh;
-}
-
-install-antibody()
-{
-  curl -sfL git.io/antibody | sh -s - -b /usr/local/bin;
-}
-
-antibody-compinit()
-{
-  # This looks strange, but allows us to never compinit.
-  zsh -c "(
-    rm -f ${TARGET_DIR}/.zcompdump;
-    autoload -Uz compinit;
-    compinit;
-    source ${TARGET_ANTIBODY_PATH};
-    rm -f ${TARGET_DIR}/.zcompdump;
-    autoload -Uz compinit;
-    compinit;
-    zcompile ${TARGET_DIR}/.zcompdump;
-    zcompile ${TARGET_ANTIBODY_PATH};
-    compinit;
-  )";
-}
-
-antibody-optimize()
-{
-  echo "Optimizing Antibody...";
-  zsh -c "(
-    autoload -Uz compinit;
-    compinit -C;
-    pushd $(antibody home) >/dev/null;
-    local LC_BACKUP=\${LC_ALL};
-    local LANG_BACKUP=\${LANG};
-    LC_ALL=C;
-    LANG=C;
-    for i in **/*.*; do
-      # sed -i '' '/^[[:blank:]]*#/d' \"\$i\" 2>/dev/null; # if a line is a comment remove it, this breaks completion somehow.
-      sed -i '' '/^[[:blank:]]*\$/d' \"\$i\" 2>/dev/null; # if a line is blank remove it.
-    done
-    for i in **/*.*; do
-      zcompile \"\$i\" 2>/dev/null; # Compile the plugins.
-    done;
-    LC_ALL=\${LC_BACKUP};
-    LANG=\${LANG_BACKUP};
-  )";
-}
-
-antibody-self-update()
-{
-  if ! check-command "antibody" ; then
-    install-antibody;
-  fi
-  zsh -c "autoload -Uz compinit && compinit & rm -rf $(antibody home)";
-  zsh -c "autoload -Uz compinit && compinit && antibody bundle < ${ANTIBODY_PLUGIN_LIST_PATH} > ${TARGET_ANTIBODY_PATH}";
-  zsh -c "autoload -Uz compinit && compinit && antibody update";
-  antibody-optimize;
-  antibody-compinit;
-}
-
-brew-install()
-{
-  brew install $BREW_INSTALLS;
-}
-
-brew-cask-install()
-{
-  brew cask install $BREW_CASK_INSTALLS;
+  rm -rf "$TARGET_DIR/.zsh-snap";
+  cp -R "$PATH_TO_DOTFILES/zsh-snap" "$TARGET_DIR/.zsh-snap";
+  zsh -c "(source $TARGET_DIR/.zsh-snap/znap.zsh && znap pull;)";
 }
 
 # Entry
+
+print-help()
+{ 
+  printf "\nSalomon Smeke Dotfiles Setup\n";
+  printf "\nCommands:\n";
+  i=0;
+  for opt in "${ACTIONS[@]}"; do
+    printf "\t%s - %s\n" "${opt}" "${DESCRIPTIONS[i]}";
+    i=$((i+1));
+  done
+  printf "\n";
+}
 
 set -e
 
@@ -218,16 +96,8 @@ main()
   if [ "$1" == "help" ]; then
     print-help;
     cancel;
-  elif [ "$1" == "symlink" ]; then
-    symlink;
-  elif [ "$1" == "macos" ]; then
-    macos;
-  elif [ "$1" == "chsh-zsh" ]; then
-    chsh-zsh;
-  elif [ "$1" == "antibody-update" ]; then
-    antibody-update;
-  elif [ "$1" == "brew-packages" ]; then
-    brew-packages;
+  elif [ "$1" == "init" ]; then
+    init;
   elif [ "$1" == "cancel" ]; then
     cancel;
   else

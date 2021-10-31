@@ -1,9 +1,23 @@
-# Enable completions
-autoload -Uz compinit;
-compinit -C;
+zstyle ':znap:*' repos-dir ~/.zsh-snap;
+zstyle ':znap:*' plugins-dir ~/.zsh-snap;
 
-# Antibody
-. ~/.zsh_antibody_plugins;
+. ~/.zsh-snap/znap.zsh;
+
+znap source ohmyzsh/ohmyzsh lib/{git,prompt_info_functions,theme-and-appearance};
+
+znap prompt ohmyzsh/ohmyzsh theunraveler;
+
+znap source ohmyzsh/ohmyzsh lib/{spectrum,key-bindings,clipboard,completion,correction,directories,functions,history};
+
+znap source ohmyzsh/ohmyzsh plugins/{wd,colored-man-pages,gitfast};
+
+znap source zsh-users/zsh-syntax-highlighting;
+
+znap source SalomonSmeke/oh-my-zsh lib/grep.zsh;
+
+znap source zpm-zsh/colorize;
+
+znap source MichaelAquilina/zsh-you-should-use;
 
 # Config
 export COMPLETION_WAITING_DOTS="true";
