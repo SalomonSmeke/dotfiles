@@ -8,8 +8,6 @@ FNAMES_TO_SYMLINK=(
 ".gitconfig"
 ".tmux.conf"
 );
-ANTIBODY_PLUGIN_LIST_PATH="$PATH_TO_DOTFILES/.zsh_antibody_plugins.txt";
-
 ACTIONS=("init" "cancel");
 DESCRIPTIONS=(
 "Install dotfiles to $TARGET_DIR."
@@ -22,7 +20,7 @@ init()
 {
   zsh-install;
   symlink;
-  zsh-snap-install;
+  zsh-plugins;
   exit 0;
 }
 
@@ -68,17 +66,43 @@ symlink()
   popd >/dev/null;
 }
 
-zsh-snap-install()
+zsh-plugins()
 {
-  rm -rf "$TARGET_DIR/.zsh-snap";
-  cp -R "$PATH_TO_DOTFILES/zsh-snap" "$TARGET_DIR/.zsh-snap";
-  zsh -c "(source $TARGET_DIR/.zsh-snap/znap.zsh && znap pull;)";
+  rm -rf "${TARGET_DIR}/.zgenom"
+  git clone https://github.com/jandamm/zgenom.git "${TARGET_DIR}/.zgenom"
+
+  zsh -c "
+  . ${TARGET_DIR}/.zgenom/zgenom.zsh
+
+  zgenom load mafredri/zsh-async
+  zgenom load SalomonSmeke/pure- pure.zsh
+
+  zgenom load ohmyzsh/ohmyzsh lib/spectrum.zsh
+  zgenom load ohmyzsh/ohmyzsh lib/key-bindings.zsh
+  zgenom load ohmyzsh/ohmyzsh lib/clipboard.zsh
+  zgenom load ohmyzsh/ohmyzsh lib/completion.zsh
+  zgenom load ohmyzsh/ohmyzsh lib/correction.zsh
+  zgenom load ohmyzsh/ohmyzsh lib/functions.zsh
+  zgenom load ohmyzsh/ohmyzsh lib/history.zsh
+  zgenom load SalomonSmeke/oh-my-zsh lib/grep.zsh
+
+  zgenom load ohmyzsh/ohmyzsh plugins/wd
+  zgenom load ohmyzsh/ohmyzsh plugins/colored-man-pages
+  zgenom load ohmyzsh/ohmyzsh plugins/gitfast
+
+  zgenom load zsh-users/zsh-syntax-highlighting
+  zgenom load zpm-zsh/colorize
+  zgenom load MichaelAquilina/zsh-you-should-use
+
+  zgenom save
+  zcompile ${TARGET_DIR}/.zgenom/sources/init.zsh;
+  "
 }
 
 # Entry
 
 print-help()
-{ 
+{
   printf "\nSalomon Smeke Dotfiles Setup\n";
   printf "\nCommands:\n";
   i=0;

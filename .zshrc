@@ -1,21 +1,4 @@
-zstyle ':znap:*' repos-dir ~/.zsh-snap;
-zstyle ':znap:*' plugins-dir ~/.zsh-snap;
-
-. ~/.zsh-snap/znap.zsh;
-
-znap prompt SalomonSmeke/pure- pure;
-
-znap source ohmyzsh/ohmyzsh lib/{spectrum,key-bindings,clipboard,completion,correction,directories,functions,history};
-
-znap source ohmyzsh/ohmyzsh plugins/{wd,colored-man-pages,gitfast};
-
-znap source zsh-users/zsh-syntax-highlighting;
-
-znap source SalomonSmeke/oh-my-zsh lib/grep.zsh;
-
-znap source zpm-zsh/colorize;
-
-znap source MichaelAquilina/zsh-you-should-use;
+. ~/.zgenom/sources/init.zsh;
 
 # Config
 export COMPLETION_WAITING_DOTS="true";
