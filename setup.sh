@@ -8,9 +8,10 @@ FNAMES_TO_SYMLINK=(
 ".gitconfig"
 ".tmux.conf"
 );
-ACTIONS=("init" "cancel");
+ACTIONS=("init" "zsh-plugins" "cancel");
 DESCRIPTIONS=(
 "Install dotfiles to $TARGET_DIR."
+"Install or update zsh plugins."
 "No-op."
 );
 
@@ -74,29 +75,24 @@ zsh-plugins()
   zsh -c "
   . ${TARGET_DIR}/.zgenom/zgenom.zsh
 
-  zgenom load mafredri/zsh-async
-  zgenom load SalomonSmeke/pure- pure.zsh
-
-  zgenom load ohmyzsh/ohmyzsh lib/spectrum.zsh
-  zgenom load ohmyzsh/ohmyzsh lib/key-bindings.zsh
-  zgenom load ohmyzsh/ohmyzsh lib/clipboard.zsh
-  zgenom load ohmyzsh/ohmyzsh lib/completion.zsh
-  zgenom load ohmyzsh/ohmyzsh lib/correction.zsh
-  zgenom load ohmyzsh/ohmyzsh lib/functions.zsh
-  zgenom load ohmyzsh/ohmyzsh lib/history.zsh
-  zgenom load SalomonSmeke/oh-my-zsh lib/grep.zsh
-
-  zgenom load ohmyzsh/ohmyzsh plugins/wd
-  zgenom load ohmyzsh/ohmyzsh plugins/colored-man-pages
   zgenom load ohmyzsh/ohmyzsh plugins/gitfast
-
+  zgenom load mafredri/zsh-async async.zsh
+  zgenom load SalomonSmeke/pure- pure.zsh
   zgenom load zsh-users/zsh-syntax-highlighting
   zgenom load zpm-zsh/colorize
-  zgenom load MichaelAquilina/zsh-you-should-use
+  zgenom load zsh-users/zsh-history-substring-search
+
+  zgenom load ohmyzsh/ohmyzsh lib/clipboard.zsh
+  zgenom load SalomonSmeke/oh-my-zsh lib/grep.zsh
+
+  zgenom load mfaerevaag/wd
 
   zgenom save
-  zcompile ${TARGET_DIR}/.zgenom/sources/init.zsh;
+  zcompile ${TARGET_DIR}/.zgenom/sources/init.zsh
   "
+  if [ "$(uname)" == "Darwin" ]; then
+    echo SHELL_SESSIONS_DISABLE=1 > "$TARGET_DIR/.zshenv"
+  fi
 }
 
 # Entry
@@ -122,6 +118,8 @@ main()
     cancel;
   elif [ "$1" == "init" ]; then
     init;
+  elif [ "$1" == "zsh-plugins" ]; then
+    zsh-plugins;
   elif [ "$1" == "cancel" ]; then
     cancel;
   else
