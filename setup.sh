@@ -83,7 +83,6 @@ zsh-plugins()
   zgenom load zsh-users/zsh-history-substring-search
 
   zgenom load ohmyzsh/ohmyzsh lib/clipboard.zsh
-  zgenom load SalomonSmeke/oh-my-zsh lib/grep.zsh
 
   zgenom load mfaerevaag/wd
 
