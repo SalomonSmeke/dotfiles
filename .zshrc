@@ -3,9 +3,7 @@ zstyle ':znap:*' plugins-dir ~/.zsh-snap;
 
 . ~/.zsh-snap/znap.zsh;
 
-znap source ohmyzsh/ohmyzsh lib/{git,prompt_info_functions,theme-and-appearance};
-
-znap prompt ohmyzsh/ohmyzsh theunraveler;
+znap prompt SalomonSmeke/pure- pure;
 
 znap source ohmyzsh/ohmyzsh lib/{spectrum,key-bindings,clipboard,completion,correction,directories,functions,history};
 
