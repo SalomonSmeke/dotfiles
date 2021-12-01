@@ -80,6 +80,7 @@ zsh-plugins()
   zgenom load SalomonSmeke/pure- pure.zsh
   zgenom load zsh-users/zsh-syntax-highlighting
   zgenom load zpm-zsh/colorize
+  zgenom load zsh-users/zsh-autosuggestions
   zgenom load zsh-users/zsh-history-substring-search
 
   zgenom load ohmyzsh/ohmyzsh lib/clipboard.zsh
