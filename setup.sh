@@ -57,7 +57,7 @@ symlink()
   pushd ${TARGET_DIR} >/dev/null;
   for opt in "${FNAMES_TO_SYMLINK[@]}"; do
     printf "\t%s" "${opt}";
-    if [ -f "$TARGET_DIR/$opt" ] ; then
+    if [ -f "$TARGET_DIR/$opt" ] || [ -L "$TARGET_DIR/$opt" ] ; then
       printf "\n\tFound! Not Overriding...";
     else
       ln -s "$PATH_TO_DOTFILES/$opt";
