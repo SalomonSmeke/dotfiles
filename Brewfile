@@ -12,3 +12,4 @@ brew "fzf"
 
 cask "imageoptim"
 cask "iina"
+cask "wezterm"

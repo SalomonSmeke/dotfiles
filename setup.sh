@@ -77,7 +77,7 @@ zsh-plugins()
 
   zgenom load ohmyzsh/ohmyzsh plugins/gitfast
   zgenom load mafredri/zsh-async async.zsh
-  zgenom load SalomonSmeke/pure- pure.zsh
+  zgenom load jackharrisonsherlock/common common.zsh-theme
   zgenom load zsh-users/zsh-syntax-highlighting
   zgenom load zpm-zsh/colorize
   zgenom load zsh-users/zsh-autosuggestions
