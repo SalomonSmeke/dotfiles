@@ -14,10 +14,12 @@
 source ~/.zgenom/sources/init.zsh;
 
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}";
+alias lvim="fnm use 18 && lvim";
 
 # Config
 setopt interactivecomments;
 export CLICOLOR=1;
+export EDITOR="lvim";
 
 # History search
 bindkey '^[[B' history-substring-search-down;
@@ -34,7 +36,6 @@ fi
 alias pls='sudo $(fc -nl -1)';
 
 turbo () {
-  zcompile ~/.zcompdump;
   zcompile ~/.zshrc;
   [ -f ~/.fzf.zsh ] && zcompile ~/.fzf.zsh;
 }
