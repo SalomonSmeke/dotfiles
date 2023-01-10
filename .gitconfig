@@ -6,4 +6,4 @@
   # See a tree structure
   tree = log --oneline --decorate --all --graph
 [init]
-	defaultBranch = main
+  defaultBranch = main

@@ -14,7 +14,7 @@
 source ~/.zgenom/sources/init.zsh;
 
 alias grep="grep --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}";
-alias lvim="fnm use 18 && lvim";
+alias lvim="fnm use 19 && lvim";
 
 # Config
 setopt interactivecomments;
@@ -41,6 +41,9 @@ turbo () {
 }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh;
+
+# Lvim
+export PATH=$HOME/.local/bin:$PATH
 
 # After-hook
 if [ -f ~/.zshrc_local_after ]; then
